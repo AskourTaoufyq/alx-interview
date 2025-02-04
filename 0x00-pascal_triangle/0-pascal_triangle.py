@@ -1,26 +1,16 @@
 #!/usr/bin/python3
 """Pascal's Triangle"""
 
-
 def pascal_triangle(n):
-    
-    pascal_tri = []
-
+    a = []
     if n <= 0:
-        return []
-
-    for i in range(n):
-        if (i == 0):
-            pascal_tri.append([1])
-        else:
-            cur_row = []
-            for j in range(i + 1):
-                if (j == 0 or j == i):
-                    cur_row.append(1)
-                else:
-                    cur_row.append(pascal_tri[i - 1][j - 1] +
-                                   pascal_tri[i - 1][j])
-
-            pascal_tri.append(cur_row)
-
-    return (pascal_tri)
+        return a
+    a = [[1]]
+    for i in range(1, n):
+        temp = [1]
+        for j in range(len(a[i - 1]) - 1):
+            curr = a[i - 1]
+            temp.append(a[i - 1][j] + a[i - 1][j + 1])
+        temp.append(1)
+        a.append(temp)
+    return
